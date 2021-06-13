@@ -5,119 +5,107 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Main_v1.1</title>
+	<title>Main1.1</title>
 	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="fonts.css">
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	<main>
-
-		<section class="header">
-
-			<div class="border"></div>
-
+	<header class="header--bgimg">
+		<div class="header__top">
+			<div class="header__border"></div>
 			<div class="container">
-
-				<div class="header-navigation">
-
-					<span class="header-text"><a href="#">NewsAnalyzer</a></span>
-
-					<nav class="nav-menu">
-
-						<li class="activ-btn"><a href="#">Главная</a></li>
-						<li class="activ-btn"><a href="#">О проекте</a></li>
-
+				<div class="header__top-inner">
+					<div class="logo">
+						<a class="logo__link" href="#">NewsAnalyzer</a>
+					</div>
+					<nav class="menu">
+						<ul class="menu__list">
+							<li class="menu__list-item">
+								<a class="menu__link menu__link--active" href="#">Главная</a>
+							</li>
+							<li class="menu__list-item">
+								<a class="menu__link menu__link--active-mobile" href="#">О проекте</a>
+							</li>
+						</ul>
 					</nav>
-
 				</div>
-
-				<div class="header-content">
-
-					<h1>Что в мире творится?</h1>
-
-					<p>Введите в поиске любую тему и узнайте, насколько популярной она была в носотях за прошедшую неделю.
-					</p>
-
+			</div>
+		</div>
+		<div class="header__content">
+			<div class="container">
+				<div class="header__content-inner">
+					<h1 class="header__content-title">Что в мире творится?</h1>
+					<p class="header__content-text">Введите в поиске любую тему и узнайте, насколько популярной она была в
+						носотях за прошедшую неделю.</p>
 					<div class="search">
-
-						<div class="search-text">
-							<input type="text" placeholder="Введите тему новости">
+						<div class="search__text-area">
+							<input class="search__text" type="text" placeholder="Введите тему новости">
 						</div>
-
-						<div class="search-button">
-							<input type="submit" value="Искать">
+						<div class="search__button">
+							<input class="search__btn" type="submit" value="Искать">
 						</div>
-
-
 					</div>
-
 				</div>
-
 			</div>
-
-		</section>
-
-		<section class="author-section">
-
-			<div class="container">
-
-				<div class="about-author">
-
-					<div class="b-img"></div>
-
-					<div class="b-content">
-
-						<h2>Об авторе</h2>
-
+		</div>
+	</header>
+	<section class="about">
+		<div class="container">
+			<div class="about__inner">
+				<div class="about__inner-box">
+					<img class="about__inner-img" src="" alt="">
+				</div>
+				<div class="about__inner-item">
+					<div class="about__inner-title">
+						Об авторе
+					</div>
+					<div class="about__inner-text">
 						<p>Это блок с описаением автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь,
-							какими технологиями разработки владете. <br>
-							<span class="second-text"> Также можно рассказать о процессе обучения в
-								Практикуме, чему вы тут научились, и чем можете
-								помочь потенциальным заказчикам.</span>
-						</p>
+							какими технологиями разработки владете.</p>
+						<br>
+						<p>Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь
+							потенциальным заказчикам.</p>
 					</div>
-
 				</div>
-
 			</div>
-
-		</section>
-
-		<section class="b-footer">
-
-			<div class="container">
-
-				<div class="footer">
-
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer__inner">
+				<div class="footer__inner-text">
 					<p>© 2019 Supersite</p>
-
-					<div class="footer-content">
-
-						<nav class="footer-nav">
-
-							<li><a href="#">Главная</a></li>
-							<li><a href="#">О проекте</a></li>
-							<li><a href="#">Valencia JS</a></li>
-
-						</nav>
-
-						<div class="footer-social">
-
-							<div class="social-img"></div>
-							<div class="social-img"></div>
-
-						</div>
-
-					</div>
-
 				</div>
-
+				<div class="footer__inner-content">
+					<nav class="footer__inner-menu">
+						<ul class="footer__inner-list">
+							<li class="footer__inner-item">
+								<a class="footer__inner-link" href="#">Главная</a>
+							</li>
+							<li class="footer__inner-item">
+								<a class="footer__inner-link" href="#">О проекте</a>
+							</li>
+							<li class="footer__inner-item">
+								<a class="footer__inner-link" href="#">Valencia JS</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="footer__inner-social">
+						<div class="footer__inner-img">
+							<img class="footer__inner-icon" src="" alt="" >
+						</div>
+						<div class="footer__inner-img">
+							<img class="footer__inner-icon" src="" alt="" >
+						</div>
+					</div>
+				</div>
 			</div>
-
-		</section>
-	</main>
+		</div>
+	</footer>
 </body>
 
 </html>
