@@ -142,12 +142,16 @@ a {
 }
 
 .about__inner-box {
-	background-image: url(img/avatar-mobile.png);
+	background-image: url(img/avatar-mobile.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
+	border-radius: 100%;
+	background-size: cover;
 	height: 272px;
-	margin-top: 32px;
-	margin-bottom: 24px;
+	width: 272px;
+	margin: 32px 35px 24px 35px;
+	/*margin-top: 32px;
+	margin-bottom: 24px;*/
 }
 
 .about__inner-title {
@@ -226,6 +230,139 @@ a {
 	margin-right: 35px;
 }
 
+@media (min-width: 768px) {
+	.header--bgimg {
+		background-image: url(img/georgia-laptop.jpg);
+		background-size: cover;
+		background-position: center;
+		height: 400px;
+	}
+
+	.header__content-title {
+		font-size: 36px;
+		line-height: 40px;
+		margin-top: 40px;
+		width: 385px;
+		text-align: inherit;
+		padding-left: 163px;
+	}
+
+	.header__content-text {
+		font-size: 18px;
+		line-height: 24px;
+		margin-top: 16px;
+		margin-bottom: 24px;
+		width: 452px;
+		text-align: inherit;
+		padding-left: 163px;
+	}
+
+	.search {
+		flex-direction: row;
+		display: flex;
+		align-items: center;
+		width: 448px;
+		border-radius: 100px;
+		background-color: #fff;
+		margin-left: 163px;
+		margin-bottom: 48px;
+	}
+
+	.search__text-area {
+		padding-left: 24px;
+		width: 228px;
+	}
+
+	.search__button {
+		width: 160px;
+		height: 56px;
+		position: relative;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-left: 36px;
+	}
+
+	.search__btn {
+		position: absolute;
+		top: 15px;
+	}
+
+	.about__inner {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.about__inner-box {
+		height: 232px;
+		width: 232px;
+		margin-top: 40px;
+		margin-bottom: 40px;
+		/*width: 38.5%;*/
+	}
+
+	.about__inner-item {
+		width: 55%;
+	}
+
+	.about__inner-title {
+		font-size: 30px;
+		line-height: 40px;
+		margin-bottom: 16px;
+		margin-top: 42px;
+	}
+
+	.about__inner-text p {
+		font-size: 18px;
+		line-height: 24px;
+		width: 424px;
+	}
+
+	.footer__inner {
+		display: flex;
+		flex-direction: row;
+		padding-top: 24px;
+		padding-bottom: 18px;
+	}
+
+	.footer__inner-content {
+		width: 84%;
+	}
+
+	.footer__inner-link {
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	.footer__inner-menu {
+		display: flex;
+		margin-left: 60px;
+		/* margin-right: 322px; */
+		margin-top: 0;
+		width: 100%;
+	}
+
+	.footer__inner-list {
+		display: flex;
+	}
+
+	.footer__inner-text p {
+		margin-bottom: 0px;
+		margin-top: 0px;
+	}
+
+	.footer__inner-item:not(:last-child) {
+		margin-right: 25px;
+	}
+
+	.footer__inner-img {
+		margin-top: 0px;
+	}
+
+	.footer__inner-img:not(:last-child) {
+		margin-right: 28px;
+	}
+}
+
 @media (min-width: 1199px) {
 	.container {
 		max-width: 1235px;
@@ -233,7 +370,8 @@ a {
 	}
 
 	.header--bgimg {
-		background-image: url(img/georgia-laptop.jpg);height: 576px;
+		/*background-image: url(img/georgia-laptop.jpg);*/
+		height: 576px;
 	}
 
 	.header__border {
@@ -306,18 +444,16 @@ a {
 		top: 18px;
 	}
 
-	.about__inner {
-		display: flex;
-		flex-direction: row;
-	}
-
 	.about__inner-box {
-		background-image: url(img/avatar-laptop.png);
+		background-image: url(img/avatar-laptop.jpg);
 		background-repeat: no-repeat;
+		background-size: cover;
+		border-radius: 100%;
 		height: 464px;
+		width: 464px;
 		margin-top: 80px;
 		margin-bottom: 80px;
-		width: 38.5%;
+		/*width: 38.5%;*/
 	}
 
 	.about__inner-item {
@@ -333,7 +469,7 @@ a {
 	}
 
 	.about__inner-text p {
-		height: 80px;
+		/*height: 100px;*/
 		width: 600px;
 	}
 
