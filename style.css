@@ -647,9 +647,12 @@ h2 {
 	}
 
 	.group__btn {
-		width: 288px;
 		height: 64px;
+		width: 288px;
 		margin: 64px auto 80px;
+	}
+
+	.about__inner-box {
 	}
 
 	.about__inner-box {
