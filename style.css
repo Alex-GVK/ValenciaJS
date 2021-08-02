@@ -390,6 +390,7 @@ h2 {
 		top: 15px;
 	}
 
+<<<<<<< HEAD
 	.group__top {
 		display: flex;
 		justify-content: space-between;
@@ -434,6 +435,8 @@ h2 {
 		margin: 22px auto 40px;
 	}
 
+=======
+>>>>>>> 507ac498aaef152842e48d5fa7309d486b9fe754
 	.about__inner {
 		display: flex;
 		flex-direction: row;
@@ -591,6 +594,7 @@ h2 {
 		top: 18px;
 	}
 
+<<<<<<< HEAD
 	.group__top-title {
 		margin: 80px 0 64px 0;
 	}
@@ -655,6 +659,8 @@ h2 {
 	.about__inner-box {
 	}
 
+=======
+>>>>>>> 507ac498aaef152842e48d5fa7309d486b9fe754
 	.about__inner-box {
 		background-image: url(img/avatar-laptop.jpg);
 		background-repeat: no-repeat;
