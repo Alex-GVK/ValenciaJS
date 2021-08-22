@@ -416,7 +416,6 @@ h2 {
 	padding: 0 24px;
 }
 
-
 .commits-slider__item {
 	cursor: pointer;
 }
@@ -431,7 +430,7 @@ h2 {
 
 .commits-slider .slick-arrow {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	z-index: 10;
 	font-size: 0;
 	width: 40px;
@@ -442,14 +441,14 @@ h2 {
 }
 
 .commits-slider .slick-arrow.slick-prev {
-	left: -3%;
+	left: 24px;
 	background: url("img/arrow_l.svg") 0 0 / 30% no-repeat;
 	background-color: #000;
 	background-position: center;
 }
 
 .commits-slider .slick-arrow.slick-next {
-	right: -3%;
+	right: 24px;
 	background: url("img/arrow_r.svg") 0 0 / 30% no-repeat;
 	background-color: #000;
 	background-position: center;
@@ -799,7 +798,7 @@ h2 {
 
 @media (min-width: 1199px) {
 	.container {
-		max-width: 1235px;
+		/* max-width: 1235px; */
 		margin: 0 auto;
 	}
 

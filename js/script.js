@@ -2,6 +2,7 @@ $(document).ready(function () {
    $('.commits-slider').slick({
       centerMode: true,
       variableWidth: true,
+      arrows: true,
       dots: true,
       centerPadding: '30px',
       slidesToShow: 3,
