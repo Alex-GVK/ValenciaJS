@@ -1,12 +1,13 @@
 $(document).ready(function () {
    $('.commits-slider').slick({
       centerMode: true,
+      variableWidth: true,
       dots: true,
       centerPadding: '30px',
       slidesToShow: 3,
       slidesToScroll: 1,
       mobileFirst: false,
-      centerMode: true,
+      waitForAnimate: false,
       responsive: [
          {
             breakpoint: 1024,
