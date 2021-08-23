@@ -424,6 +424,34 @@ h2 {
 	display: flex;
 }
 
+.commits {
+	position: relative;
+}
+
+.commits-slider::after {
+	content: '';
+	position: absolute;
+	display: block;
+	z-index: 9;
+	top: 0;
+	right: 0;
+	box-shadow: inset -30px 0px 50px 0px #f5f6f7;
+	height: 288px;
+	width: 50px;
+}
+
+.commits-slider::before {
+	content: '';
+	position: absolute;
+	display: block;
+	z-index: 9;
+	top: 0;
+	left: 0;
+	box-shadow: inset -30px 0px 50px 0px #f5f6f7;
+	height: 288px;
+	width: 50px;
+}
+
 .commits-slider {
 	position: relative;
 }
@@ -474,6 +502,7 @@ h2 {
 	background-color: #d1d2d6;
 	border-width: 0px;
 	padding: 0px;
+	cursor: pointer;
 }
 
 .commits-slider .slick-dots li.slick-active button {
@@ -653,6 +682,7 @@ h2 {
 		min-height: 420px;
 		max-height: 594px;
 		max-width: 100%;
+		/* position: relative; */
 	}
 
 	.item-group__title {
@@ -667,6 +697,8 @@ h2 {
 	.item-group__website {
 		font-size: 16px;
 		line-height: 20px;
+		/* position: absolute; */
+		/* bottom: 0; */
 	}
 
 	.item-group__icon {
@@ -693,10 +725,8 @@ h2 {
 
 	.about__inner-box {
 		height: 232px;
-		/* width: 232px; */
 		margin-top: 40px;
 		margin-bottom: 40px;
-		/*width: 38.5%;*/
 	}
 
 	.about__inner-item {
@@ -746,10 +776,6 @@ h2 {
 		padding: 32px 0px 0px 0px;
 	}
 
-	/* .item-inner {
-		width: 100%;
-	} */
-
 	.footer__inner {
 		display: flex;
 		flex-direction: row;
@@ -798,12 +824,10 @@ h2 {
 
 @media (min-width: 1199px) {
 	.container {
-		/* max-width: 1235px; */
 		margin: 0 auto;
 	}
 
 	.header--bgimg {
-		/*background-image: url(img/georgia-laptop.jpg);*/
 		height: 576px;
 	}
 
@@ -931,8 +955,9 @@ h2 {
 
 	.item-group {
 		max-width: 100%;
-		min-height: 595px;
+		min-height: 576px;
 		margin-bottom: 0px;
+		position: relative;
 	}
 
 	.item-group__icon {
@@ -960,7 +985,9 @@ h2 {
 	}
 
 	.item-group__website {
-		margin: 0px 24px 24px;
+		padding: 0px 0px 24px 24px;
+		position: absolute;
+		bottom: 0;
 	}
 
 	.group__btn {
