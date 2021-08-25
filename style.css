@@ -424,34 +424,6 @@ h2 {
 	display: flex;
 }
 
-.commits {
-	position: relative;
-}
-
-.commits-slider::after {
-	content: '';
-	position: absolute;
-	display: block;
-	z-index: 9;
-	top: 0;
-	right: 0;
-	box-shadow: inset -30px 0px 50px 0px #f5f6f7;
-	height: 288px;
-	width: 50px;
-}
-
-.commits-slider::before {
-	content: '';
-	position: absolute;
-	display: block;
-	z-index: 9;
-	top: 0;
-	left: 0;
-	box-shadow: inset -30px 0px 50px 0px #f5f6f7;
-	height: 288px;
-	width: 50px;
-}
-
 .commits-slider {
 	position: relative;
 }
@@ -1035,18 +1007,40 @@ h2 {
 		padding: 48px 0px 0px 0px;
 	}
 
+	.commits {
+		position: relative;
+	}
+	
+	.commits-slider::after {
+		content: '';
+		position: absolute;
+		display: block;
+		z-index: 9;
+		top: 0;
+		right: 0;
+		box-shadow: inset -30px 0px 50px 0px #f5f6f7;
+		height: 288px;
+		width: 50px;
+	}
+	
+	.commits-slider::before {
+		content: '';
+		position: absolute;
+		display: block;
+		z-index: 9;
+		top: 0;
+		left: 0;
+		box-shadow: inset -30px 0px 50px 0px #f5f6f7;
+		height: 288px;
+		width: 50px;
+	}
+
 	.footer__inner {
 		display: flex;
 		flex-direction: row;
 		padding-top: 33px;
 		padding-bottom: 25px;
 	}
-
-	/* .footer__inner-text p {
-		margin-bottom: 0px;
-		margin-top: 0px;
-		width: 20%;
-	} */
 
 	.footer__inner-content {
 		width: 90%;
