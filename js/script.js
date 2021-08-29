@@ -14,26 +14,23 @@ $(document).ready(function () {
             breakpoint: 1024,
             settings: {
                arrows: false,
-               centerMode: true,
-               centerPadding: '20px',
+               centerMode: false,
                slidesToShow: 2
             }
          },
          {
             breakpoint: 768,
             settings: {
+               centerMode: false,
                arrows: false,
-               centerMode: true,
-               centerPadding: '10px',
                slidesToShow: 2
             }
          },
          {
             breakpoint: 600,
             settings: {
+               centerMode: false,
                arrows: false,
-               centerMode: true,
-               centerPadding: '0px',
                slidesToShow: 1
             }
          }
