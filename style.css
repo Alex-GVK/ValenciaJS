@@ -557,6 +557,20 @@ h2 {
 		margin: 22px 0 0 0;
 	}
 
+	.logo__link {
+		font-size: 20px;
+		line-height: 24px;
+	}
+
+	.menu__link {
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	.menu__list-item--active:not(:last-child) {
+		margin-right: 34px;
+	}
+	
 	.menu__list-item--active {
 		padding-bottom: 18px;
 	}
@@ -813,10 +827,6 @@ h2 {
 
 	.header__top-inner {
 		margin: 30px 0 0 0;
-	}
-
-	.menu__list-item--active:not(:last-child) {
-		margin-right: 34px;
 	}
 
 	.menu__list-item--active {
