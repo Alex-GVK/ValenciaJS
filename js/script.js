@@ -1,3 +1,33 @@
+
+async function fetchNews() {
+
+   const response = await fetch('https://nomoreparties.co/news/v2/everything?q=apple&from=2021-08-27&to=currentData&sortBy=publishedAt&pageSize=100&apiKey=7b6944c7dcee48669d9b0f45a147bab1');
+   
+   const data = await response.json();
+   return data;
+   
+}
+
+
+fetchNews().then(response => {
+   localStorage.setItem('news', JSON.stringify(response));
+
+   let newsData = localStorage.getItem('news')
+
+   newsData = JSON.parse(newsData);
+   console.log(response);
+})
+
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function () {
    $('.commits-slider').slick({
       centerMode: true,
