@@ -1,14 +1,13 @@
 
 async function fetchNews() {
 
-   const response = await fetch('https://nomoreparties.co/news/v2/everything?q=apple&from=2021-08-27&to=currentData&sortBy=publishedAt&pageSize=100&apiKey=7b6944c7dcee48669d9b0f45a147bab1');
+   const response = await fetch('https://nomoreparties.co/news/v2/everything?q=natura&from=2021-08-27&to=currentData&sortBy=publishedAt&pageSize=100&apiKey=7b6944c7dcee48669d9b0f45a147bab1');
    
    const data = await response.json();
    return data;
    
 }
-
-
+   
 fetchNews().then(response => {
    localStorage.setItem('news', JSON.stringify(response));
 
@@ -16,11 +15,26 @@ fetchNews().then(response => {
 
    newsData = JSON.parse(newsData);
    console.log(response);
+   
+   for (let value of Object.values(newsData)) {
+      console.log(Object.values(newsData)[2]);
+   }
+
+   let key;
+   let content = Object.values(newsData)[2];
+
+   for (key in content) {
+      console.log(content[key]);
+   }
+
+   document.querySelector('.item-group__website').textContent = content[key].source.name
+   document.querySelector('.item-group__title').textContent = content[key].title
+   document.querySelector('.item-group__date').textContent = content[key].publishedAt
+   document.querySelector('.item-group__text').textContent = content[key].description
+   document.querySelector('.item-group__img').innerHTML = ` <img src = "${content[key].urlToImage}"> `
+   
 })
-
-
-
-
+   .catch(error => (error));
 
 
 
