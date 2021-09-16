@@ -1,7 +1,20 @@
+let search = document.querySelector('.search');
+let searchTextInput = document.querySelector('.search__text');
+let searchButtonInput = document.querySelector('.search__btn');
 
-async function fetchNews() {
+searchButtonInput.addEventListener('click', function () {
+   
+   let inpText = searchTextInput.value;
+   
+   let group = document.querySelector('.group');
+   
+   if (group.classList.contains('group--disabled')) {
+      group.classList.remove('group--disabled')
+   }
 
-   const response = await fetch('https://nomoreparties.co/news/v2/everything?q=natura&from=2021-08-27&to=currentData&sortBy=publishedAt&pageSize=100&apiKey=7b6944c7dcee48669d9b0f45a147bab1');
+   async function fetchNews() {
+
+   const response = await fetch(`https://nomoreparties.co/news/v2/everything?q=${inpText}&from=2021-08-27&to=currentData&sortBy=publishedAt&pageSize=100&apiKey=7b6944c7dcee48669d9b0f45a147bab1`);
    
    const data = await response.json();
    return data;
@@ -15,26 +28,74 @@ fetchNews().then(response => {
 
    newsData = JSON.parse(newsData);
    console.log(response);
+
+
+   let news = response.articles;
+
+   let newsUrl = [];
+   let newsImg = [];
+   let newsPublished = [];
+   let newsTitle = [];
+   let newsDescription = [];
+   let newsSourceName = [];
+
+   news.forEach(article => {
+      newsUrl.push(article.url);
+      newsImg.push(article.urlToImage);
+      newsPublished.push(article.publishedAt);
+      newsTitle.push(article.title);
+      newsDescription.push(article.description);
+      newsSourceName.push(article.source.name);
+      
+   });
+
+   let urlArticle = document.querySelectorAll('.item-group');
    
-   for (let value of Object.values(newsData)) {
-      console.log(Object.values(newsData)[2]);
+   for (let i = 0; i < urlArticle.length; i++) {
+      urlArticle[i].setAttribute('href', newsUrl[i]);
+      urlArticle[i].setAttribute('target', '_blank');
    }
 
-   let key;
-   let content = Object.values(newsData)[2];
-
-   for (key in content) {
-      console.log(content[key]);
+   let imgArticle = document.querySelectorAll('.item-group__img');
+   
+   for (let i = 0; i < imgArticle.length; i++) {
+      imgArticle[i].setAttribute('src', newsImg[i]);
    }
 
-   document.querySelector('.item-group__website').textContent = content[key].source.name
-   document.querySelector('.item-group__title').textContent = content[key].title
-   document.querySelector('.item-group__date').textContent = content[key].publishedAt
-   document.querySelector('.item-group__text').textContent = content[key].description
-   document.querySelector('.item-group__img').innerHTML = ` <img src = "${content[key].urlToImage}"> `
+   let publishedArticle = document.querySelectorAll('.item-group__date');
+
+   for (let i = 0; i < publishedArticle.length; i++) {
+      publishedArticle[i].textContent = newsPublished[i];
+   }
+   
+   let titleArticle = document.querySelectorAll('.item-group__title');
+
+   for (let i = 0; i < titleArticle.length; i++) {
+      titleArticle[i].textContent = newsTitlt[i];
+   }
+
+   let descriptionArticle = document.querySelectorAll('.item-group__text');
+
+   for (let i = 0; i < descriptionArticle.length; i++) {
+      descriptionArticle[i].textContent = newsDescription[i];
+   }
+
+   let sourceArticle = document.querySelectorAll('.item-group__website');
+
+   for (let i = 0; i < sourceArticle.length; i++) {
+      sourceArticle[i].textContent = newsSourceName[i];
+   }
+
+
    
 })
+
    .catch(error => (error));
+
+})
+
+
+
 
 
 

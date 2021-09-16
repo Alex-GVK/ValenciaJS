@@ -15,6 +15,10 @@ a {
 	padding: 0 16px;
 }
 
+.group--disabled {
+	display: none;
+}
+
 .header--bgimg {
 	background-image: url(img/georgia-mobile.png);
 	width: 100%;
