@@ -1,146 +1,159 @@
-let search = document.querySelector('.search');
-let searchTextInput = document.querySelector('.search__text');
-let searchButtonInput = document.querySelector('.search__btn');
+// Блок запроса
 
-searchButtonInput.addEventListener('click', function () {
-   
-   let inpText = searchTextInput.value;
-   
-   let group = document.querySelector('.group');
-   
-   if (group.classList.contains('group--disabled')) {
-      group.classList.remove('group--disabled')
-   }
+const form = document.querySelector(".form");
+const formTextInput = document.querySelector(".form__text");
+const formButtonInput = document.querySelector(".form__btn");
 
-   async function fetchNews() {
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-   const response = await fetch(`https://nomoreparties.co/news/v2/everything?q=${inpText}&from=2021-08-27&to=currentData&sortBy=publishedAt&pageSize=100&apiKey=7b6944c7dcee48669d9b0f45a147bab1`);
-   
-   const data = await response.json();
-   return data;
-   
-}
-   
-fetchNews().then(response => {
-   localStorage.setItem('news', JSON.stringify(response));
+  const inputValueBtn = formTextInput.value;
+  if (inputValueBtn === '') {
+    alert("Нужно ввести ключевое слово");
+    return
+  }
 
-   let newsData = localStorage.getItem('news')
+   const group = document.querySelector(".group");
 
-   newsData = JSON.parse(newsData);
-   console.log(response);
+  if (group.classList.contains("group--disabled")) {
+    group.classList.remove("group--disabled");
+  }
+
+  const apiKey = "7b6944c7dcee48669d9b0f45a147bab1";
+
+  const currentDate = new Date();
+  const pastDate = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
 
 
-   let news = response.articles;
+// запросы к newsapi
 
-   let newsUrl = [];
-   let newsImg = [];
-   let newsPublished = [];
-   let newsTitle = [];
-   let newsDescription = [];
-   let newsSourceName = [];
+  async function fetchNews() {
+    const response = await fetch(
+      `https://nomoreparties.co/news/v2/everything?q=${inputValueBtn}&from=${pastDate}&to=${currentDate}&sortBy=publishedAt&pageSize=100&apiKey=${apiKey}`
+    );
 
-   news.forEach(article => {
-      newsUrl.push(article.url);
-      newsImg.push(article.urlToImage);
-      newsPublished.push(article.publishedAt);
-      newsTitle.push(article.title);
-      newsDescription.push(article.description);
-      newsSourceName.push(article.source.name);
-      
-   });
+    const data = await response.json();
+    return data;
+  }
 
-   let urlArticle = document.querySelectorAll('.item-group');
-   
-   for (let i = 0; i < urlArticle.length; i++) {
-      urlArticle[i].setAttribute('href', newsUrl[i]);
-      urlArticle[i].setAttribute('target', '_blank');
-   }
+// Карточка
 
-   let imgArticle = document.querySelectorAll('.item-group__img');
-   
-   for (let i = 0; i < imgArticle.length; i++) {
-      imgArticle[i].setAttribute('src', newsImg[i]);
-   }
+  fetchNews()
+    .then((response) => {
+      localStorage.setItem("news", JSON.stringify(response));
 
-   let publishedArticle = document.querySelectorAll('.item-group__date');
+      let newsData = localStorage.getItem("news");
 
-   for (let i = 0; i < publishedArticle.length; i++) {
-      publishedArticle[i].textContent = newsPublished[i];
-   }
-   
-   let titleArticle = document.querySelectorAll('.item-group__title');
+      newsData = JSON.parse(newsData);
+      console.log(newsData);
 
-   for (let i = 0; i < titleArticle.length; i++) {
-      titleArticle[i].textContent = newsTitlt[i];
-   }
+      let news = response.articles;
 
-   let descriptionArticle = document.querySelectorAll('.item-group__text');
+      const newsUrl = [];
+      const newsImg = [];
+      const newsPublished = [];
+      const newsTitle = [];
+      const newsDescription = [];
+      const newsSourceName = [];
 
-   for (let i = 0; i < descriptionArticle.length; i++) {
-      descriptionArticle[i].textContent = newsDescription[i];
-   }
+      news.forEach((article) => {
+        newsUrl.push(article.url);
+        newsImg.push(article.urlToImage);
+        newsPublished.push(article.publishedAt);
+        newsTitle.push(article.title);
+        newsDescription.push(article.description);
+        newsSourceName.push(article.source.name);
+      });
 
-   let sourceArticle = document.querySelectorAll('.item-group__website');
+      const urlArticle = document.querySelectorAll(".item-group");
 
-   for (let i = 0; i < sourceArticle.length; i++) {
-      sourceArticle[i].textContent = newsSourceName[i];
-   }
+      for (let i = 0; i < urlArticle.length; i++) {
+        urlArticle[i].setAttribute("href", newsUrl[i]);
+        urlArticle[i].setAttribute("target", "_blank");
+      }
 
+      const imgArticle = document.querySelectorAll(".item-group__img");
 
-   
-})
+      for (let i = 0; i < imgArticle.length; i++) {
+        imgArticle[i].setAttribute("src", newsImg[i]);
+      }
 
-   .catch(error => (error));
+// Creat new format Date in item card
 
-})
+      function getDatePublishedAt() {
+         const publishedArticle = document.querySelectorAll(".item-group__date");
 
+         for (let i = 0; i < publishedArticle.length; i++) {
+            const itemDate = newsPublished[i];
+            const formateItemDate = new Date(itemDate).toLocaleDateString("ru-RU", {year: "numeric", month: "long", day: "numeric",});
+            const prunFormateItemDate = formateItemDate.slice(0, -3)
+            const breakFormateItemDate = prunFormateItemDate.split(" ");
+            const correctDate = prunFormateItemDate.replace(breakFormateItemDate[1], breakFormateItemDate[1] + ",");
+            publishedArticle[i].textContent = correctDate;
+            
+         }
+      }
+      getDatePublishedAt()
 
+      const titleArticle = document.querySelectorAll(".item-group__title");
 
+      for (let i = 0; i < titleArticle.length; i++) {
+        titleArticle[i].textContent = newsTitle[i];
+      }
 
+      const descriptionArticle = document.querySelectorAll(".item-group__text");
 
+      for (let i = 0; i < descriptionArticle.length; i++) {
+        descriptionArticle[i].textContent = newsDescription[i];
+      }
 
+      const sourceArticle = document.querySelectorAll(".item-group__website");
 
-
-
+      for (let i = 0; i < sourceArticle.length; i++) {
+        sourceArticle[i].textContent = newsSourceName[i];
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
 $(document).ready(function () {
-   $('.commits-slider').slick({
-      centerMode: true,
-      variableWidth: true,
-      arrows: true,
-      dots: true,
-      centerPadding: '30px',
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      mobileFirst: false,
-      waitForAnimate: false,
-      responsive: [
-         {
-            breakpoint: 1024,
-            settings: {
-               arrows: false,
-               centerMode: false,
-               slidesToShow: 2
-            }
-         },
-         {
-            breakpoint: 768,
-            settings: {
-               centerMode: false,
-               arrows: false,
-               slidesToShow: 2
-            }
-         },
-         {
-            breakpoint: 600,
-            settings: {
-               centerMode: false,
-               arrows: false,
-               slidesToShow: 1
-            }
-         }
-
-      ]
-
-   });
+  $(".commits-slider").slick({
+    centerMode: true,
+    variableWidth: true,
+    arrows: true,
+    dots: true,
+    centerPadding: "30px",
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    mobileFirst: false,
+    waitForAnimate: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: false,
+          arrows: false,
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          centerMode: false,
+          arrows: false,
+          slidesToShow: 1,
+        },
+      },
+    ],
+  });
 });

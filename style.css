@@ -105,12 +105,12 @@ a {
 	margin-bottom: 24px;
 }
 
-.search {
+.form {
 	display: flex;
 	flex-direction: column;
 }
 
-.search__text-area {
+.form__text-area {
 	display: flex;
 	padding-left: 24px;
 	height: 56px;
@@ -118,7 +118,7 @@ a {
 	background-color: #fff;
 }
 
-.search__text {
+.form__text {
 	font-family: "Roboto";
 	color: #1A1B22;
 	font-weight: 400;
@@ -130,11 +130,11 @@ a {
 	background: inherit;
 }
 
-.search__text::-webkit-input-placeholder {
+.form__text::-webkit-input-placeholder {
 	color: #B6BCBF;
 }
 
-.search__button {
+.form__button {
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -146,7 +146,7 @@ a {
 	margin-bottom: 32px;
 }
 
-.search__btn {
+.form__btn {
 	border: none;
 	outline: none;
 	background: inherit;
@@ -598,7 +598,7 @@ h2 {
 		padding-left: 163px;
 	}
 
-	.search {
+	.form {
 		flex-direction: row;
 		display: flex;
 		align-items: center;
@@ -609,12 +609,12 @@ h2 {
 		margin-bottom: 48px;
 	}
 
-	.search__text-area {
+	.form__text-area {
 		padding-left: 24px;
 		width: 228px;
 	}
 
-	.search__button {
+	.form__button {
 		width: 160px;
 		height: 56px;
 		position: relative;
@@ -623,7 +623,7 @@ h2 {
 		margin-left: 36px;
 	}
 
-	.search__btn {
+	.form__btn {
 		position: absolute;
 		top: 15px;
 	}
@@ -887,7 +887,7 @@ h2 {
 		padding-left: 312px;
 	}
 
-	.search {
+	.form {
 		flex-direction: row;
 		display: flex;
 		align-items: center;
@@ -898,12 +898,12 @@ h2 {
 		margin-bottom: 80px;
 	}
 
-	.search__text-area {
+	.form__text-area {
 		padding-left: 24px;
 		width: 440px;
 	}
 
-	.search__button {
+	.form__button {
 		width: 168px;
 		height: 64px;
 		position: relative;
@@ -911,7 +911,7 @@ h2 {
 		margin-bottom: 0px;
 	}
 
-	.search__btn {
+	.form__btn {
 		position: absolute;
 		top: 18px;
 	}
