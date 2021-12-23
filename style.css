@@ -1053,6 +1053,7 @@ h2 {
     font-size: 26px;
     line-height: 30px;
     margin: 0px 24px 16px;
+    /* -webkit-line-clamp: 3; */
   }
 
   .item-group__text {

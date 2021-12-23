@@ -23,7 +23,6 @@ form.addEventListener("submit", function (event) {
 
   const preloader = document.querySelector(".preloader");
 
-
   const apiKey = "7b6944c7dcee48669d9b0f45a147bab1";
 
   const currentDate = new Date();
@@ -47,17 +46,17 @@ form.addEventListener("submit", function (event) {
       newsData = JSON.parse(newsData);
       console.log(newsData);
 
-      // let news = response.articles;
+      let news = response.articles;
 
       // news.length += newsCount
 
-      const notFoundNews = document.querySelector('.without-info');
+      const notFoundNews = document.querySelector(".without-info");
 
       if (news.length === 0) {
-        notFoundNews.classList.remove('without-info--disabled');
-        group.classList.add('group--disabled');
+        notFoundNews.classList.remove("without-info--disabled");
+        group.classList.add("group--disabled");
       } else {
-        notFoundNews.classList.add('without-info--disabled');
+        notFoundNews.classList.add("without-info--disabled");
       }
 
       news.forEach((article) => {
@@ -69,56 +68,12 @@ form.addEventListener("submit", function (event) {
         newsSourceName.push(article.source.name);
       });
 
-      const urlArticle = document.querySelectorAll(".item-group");
-
-      for (let i = 0; i < urlArticle.length; i++) {
-        urlArticle[i].setAttribute("href", newsUrl[i]);
-        urlArticle[i].setAttribute("target", "_blank");
-      }
-
-      const imgArticle = document.querySelectorAll(".item-group__img");
-
-      for (let i = 0; i < imgArticle.length; i++) {
-        imgArticle[i].setAttribute("src", newsImg[i]);
-      }
-
-      function getDatePublishedAt() {
-        const publishedArticle = document.querySelectorAll(".item-group__date");
-
-        for (let i = 0; i < publishedArticle.length; i++) {
-          const itemDate = newsPublished[i];
-          const formateItemDate = new Date(itemDate).toLocaleDateString(
-            "ru-RU",
-            { year: "numeric", month: "long", day: "numeric" }
-          );
-          const prunFormateItemDate = formateItemDate.slice(0, -3);
-          const breakFormateItemDate = prunFormateItemDate.split(" ");
-          const correctDate = prunFormateItemDate.replace(
-            breakFormateItemDate[1],
-            breakFormateItemDate[1] + ","
-          );
-          publishedArticle[i].textContent = correctDate;
-        }
-      }
-      getDatePublishedAt();
-
-      const titleArticle = document.querySelectorAll(".item-group__title");
-
-      for (let i = 0; i < titleArticle.length; i++) {
-        titleArticle[i].textContent = newsTitle[i];
-      }
-
-      const descriptionArticle = document.querySelectorAll(".item-group__text");
-
-      for (let i = 0; i < descriptionArticle.length; i++) {
-        descriptionArticle[i].textContent = newsDescription[i];
-      }
-
-      const sourceArticle = document.querySelectorAll(".item-group__website");
-
-      for (let i = 0; i < sourceArticle.length; i++) {
-        sourceArticle[i].textContent = newsSourceName[i];
-      }
+      getDateUrlArticle();
+      getDateImgArticle();
+      getDatePublishedArticle();
+      getDateTitleArticle();
+      getDateDescriptionArticle();
+      getDateSourceNameArticle();
     })
     .catch(() => {
       alert(
@@ -163,7 +118,6 @@ function createPreloaderWithoutInfo() {
 }
 createPreloaderWithoutInfo();
 
-
 function createNewsCard() {
   const cardsRow = document.querySelector(".group__row");
   for (let i = 0; i <= 2; i++) {
@@ -206,30 +160,82 @@ const newsTitle = [];
 const newsDescription = [];
 const newsSourceName = [];
 
+function getDateUrlArticle() {
+  const urlArticle = document.querySelectorAll(".item-group");
 
+  for (let i = 0; i < urlArticle.length; i++) {
+    urlArticle[i].setAttribute("href", newsUrl[i]);
+    urlArticle[i].setAttribute("target", "_blank");
+  }
+}
 
-
-
-
-
-
-const groupBtn = document.querySelector('.group__btn');
-
-groupBtn.addEventListener('click', function() {
-  createNewsCard();
+function getDateImgArticle() {
   const imgArticle = document.querySelectorAll(".item-group__img");
 
-      for (let i = 0; i < imgArticle.length; i++) {
-        imgArticle[i].setAttribute("src", newsImg[i]);
-      }
+  for (let i = 0; i < imgArticle.length; i++) {
+    imgArticle[i].setAttribute("src", newsImg[i]);
+  }
+}
 
-//       const test = document.querySelectorAll('.item-group');
-// console.log(test.length);
+function getDatePublishedArticle() {
+  const publishedArticle = document.querySelectorAll(".item-group__date");
 
-})
+  for (let i = 0; i < publishedArticle.length; i++) {
+    const itemDate = newsPublished[i];
+    const formateItemDate = new Date(itemDate).toLocaleDateString("ru-RU", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const prunFormateItemDate = formateItemDate.slice(0, -3);
+    const breakFormateItemDate = prunFormateItemDate.split(" ");
+    const correctDate = prunFormateItemDate.replace(
+      breakFormateItemDate[1],
+      breakFormateItemDate[1] + ","
+    );
+    publishedArticle[i].textContent = correctDate;
+  }
+}
 
+function getDateTitleArticle() {
+  const titleArticle = document.querySelectorAll(".item-group__title");
 
+  for (let i = 0; i < titleArticle.length; i++) {
+    titleArticle[i].textContent = newsTitle[i];
+  }
+}
 
+function getDateDescriptionArticle() {
+  const descriptionArticle = document.querySelectorAll(".item-group__text");
+
+  for (let i = 0; i < descriptionArticle.length; i++) {
+    descriptionArticle[i].textContent = newsDescription[i];
+  }
+}
+
+function getDateSourceNameArticle() {
+  const sourceArticle = document.querySelectorAll(".item-group__website");
+
+  for (let i = 0; i < sourceArticle.length; i++) {
+    sourceArticle[i].textContent = newsSourceName[i];
+  }
+}
+
+const groupBtn = document.querySelector(".group__btn");
+
+groupBtn.addEventListener("click", function () {
+  createNewsCard();
+
+  getDateUrlArticle();
+  getDateImgArticle();
+  getDatePublishedArticle();
+  getDateTitleArticle();
+  getDateDescriptionArticle();
+  getDateSourceNameArticle();
+
+  //       const test = document.querySelectorAll('.item-group');
+  // console.log(test.length);
+});
 
 $(document).ready(function () {
   $(".commits-slider").slick({
