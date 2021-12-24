@@ -1,8 +1,6 @@
 const form = document.querySelector(".form");
 const formTextInput = document.querySelector(".form__text");
 const formButtonInput = document.querySelector(".form__btn");
-// let newsCount = 0;
-// console.log(newsCount);
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -60,6 +58,7 @@ form.addEventListener("submit", function (event) {
       }
 
       news.forEach((article) => {
+        articleNews.push(article);
         newsUrl.push(article.url);
         newsImg.push(article.urlToImage);
         newsPublished.push(article.publishedAt);
@@ -125,7 +124,7 @@ function createNewsCard() {
     cardsColumn.className = "group__column";
     cardsRow.append(cardsColumn);
 
-    const itemGroupCard = document.createElement("div");
+    const itemGroupCard = document.createElement("a");
     itemGroupCard.className = "item-group";
     cardsColumn.append(itemGroupCard);
 
@@ -153,6 +152,7 @@ function createNewsCard() {
 }
 createNewsCard();
 
+const articleNews = [];
 const newsUrl = [];
 const newsImg = [];
 const newsPublished = [];
@@ -233,8 +233,10 @@ groupBtn.addEventListener("click", function () {
   getDateDescriptionArticle();
   getDateSourceNameArticle();
 
-  //       const test = document.querySelectorAll('.item-group');
-  // console.log(test.length);
+  const itemGroup = document.querySelectorAll('.item-group');
+  if (itemGroup.length >= articleNews.length) {
+    groupBtn.classList.add('group__btn--disabled')
+  }
 });
 
 $(document).ready(function () {

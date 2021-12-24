@@ -23,11 +23,11 @@ a {
   display: none;
 }
 
-/* .disabled {
+.group__btn--disabled {
   display: none;
 }
 
-.active {
+/* .active {
   display: block;
 } */
 
@@ -127,13 +127,15 @@ a {
 
 .form__text-area {
   display: flex;
-  padding-left: 24px;
+  /* padding-left: 24px; */
   height: 56px;
   border-radius: 100px;
   background-color: #fff;
 }
 
 .form__text {
+  width: 100%;
+  margin: 17px 16px;
   font-family: "Roboto";
   color: #1a1b22;
   font-weight: 400;
@@ -631,6 +633,60 @@ h2 {
   margin-right: 35px;
 }
 
+@media (min-width: 499px) {
+  .header__content-text {
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    width: 452px;
+    text-align: inherit;
+  }
+
+  .form {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    width: 448px;
+    border-radius: 100px;
+    background-color: #fff;
+    margin-bottom: 48px;
+  }
+
+  .form__text-area {
+    /* padding-left: 24px; */
+    width: 290px;
+  }
+
+  .form__text {
+    margin: 17px 40px 17px 24px;
+  }
+
+  .form__button {
+    width: 160px;
+    height: 56px;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    /* margin-left: 36px; */
+  }
+
+  .form__btn {
+    position: absolute;
+    top: 15px;
+  }
+
+  .group__btn {
+    width: 400px;
+  }
+
+  .commits__top-button {
+    margin: 0px auto;
+    width: 400px;
+  }
+
+}
+
 @media (min-width: 768px) {
   .header--bgimg {
     background-image: url(img/georgia-laptop.jpg);
@@ -675,43 +731,11 @@ h2 {
   }
 
   .header__content-text {
-    font-size: 18px;
-    line-height: 24px;
-    margin-top: 16px;
-    margin-bottom: 24px;
-    width: 452px;
-    text-align: inherit;
     padding-left: 163px;
   }
 
   .form {
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    width: 448px;
-    border-radius: 100px;
-    background-color: #fff;
     margin-left: 163px;
-    margin-bottom: 48px;
-  }
-
-  .form__text-area {
-    padding-left: 24px;
-    width: 228px;
-  }
-
-  .form__button {
-    width: 160px;
-    height: 56px;
-    position: relative;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 36px;
-  }
-
-  .form__btn {
-    position: absolute;
-    top: 15px;
   }
 
   .group__top {
@@ -758,10 +782,9 @@ h2 {
 
   .item-group {
     margin-bottom: 0px;
-    min-height: 420px;
-    max-height: 594px;
-    max-width: 100%;
-    /* position: relative; */
+    height: 420px;
+    width: 100%;
+    position: relative;
   }
 
   .item-group__title {
@@ -776,8 +799,9 @@ h2 {
   .item-group__website {
     font-size: 16px;
     line-height: 20px;
-    /* position: absolute; */
-    /* bottom: 0; */
+    position: absolute;
+    bottom: 0;
+    padding: 0 0 10px 16px;
   }
 
   .item-group__icon {
@@ -900,6 +924,20 @@ h2 {
   .footer__inner-img:not(:last-child) {
     margin-right: 28px;
   }
+}
+
+@media (min-width: 896px) {
+  .item-group {
+    height: 430px;
+  }
+  .item-group__title {
+    -webkit-line-clamp: 2;
+  }
+
+  .item-group__text {
+    -webkit-line-clamp: 3;
+  }
+
 }
 
 @media (min-width: 1199px) {
@@ -1030,7 +1068,7 @@ h2 {
   }
 
   .item-group {
-    max-width: 100%;
+    /* max-width: 100%; */
     min-height: 576px;
     margin-bottom: 0px;
     position: relative;
