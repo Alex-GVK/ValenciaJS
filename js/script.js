@@ -46,8 +46,6 @@ form.addEventListener("submit", function (event) {
 
       let news = response.articles;
 
-      // news.length += newsCount
-
       const notFoundNews = document.querySelector(".without-info");
 
       if (news.length === 0) {
@@ -56,6 +54,11 @@ form.addEventListener("submit", function (event) {
       } else {
         notFoundNews.classList.add("without-info--disabled");
       }
+
+      // if (formButtonInput) {
+      //   notFoundNews.classList.contains(".without-info--active")
+      //   // notFoundNews.classList.add("without-info--disabled");
+      // }
 
       news.forEach((article) => {
         articleNews.push(article);
@@ -233,9 +236,15 @@ groupBtn.addEventListener("click", function () {
   getDateDescriptionArticle();
   getDateSourceNameArticle();
 
-  const itemGroup = document.querySelectorAll('.item-group');
-  if (itemGroup.length >= articleNews.length) {
-    groupBtn.classList.add('group__btn--disabled')
+  const itemGroup = document.querySelectorAll(".item-group");
+
+  for (let i = 0; i < itemGroup.length; i++) {
+    const itemAttribute = itemGroup[i].getAttribute("href");
+    if (itemAttribute === "undefined") {
+      itemGroup[i].remove();
+    } else if (itemGroup.length >= articleNews.length) {
+      groupBtn.classList.add("group__btn--disabled");
+    }
   }
 });
 
