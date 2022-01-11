@@ -1,6 +1,8 @@
 const form = document.querySelector(".form");
 const formTextInput = document.querySelector(".form__text");
 const formButtonInput = document.querySelector(".form__btn");
+const notFoundNews = document.querySelector(".without-info");
+const group = document.querySelector(".group");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -9,15 +11,29 @@ form.addEventListener("submit", function (event) {
   if (inputValueBtn === "") {
     alert("Нужно ввести ключевое слово");
     return;
-  }
-
-  const group = document.querySelector(".group");
-
-  if (group.classList.contains("group--disabled")) {
+  } else if (group.classList.contains("group--disabled")) {
     group.classList.remove("group--disabled");
   }
 
+  formTextInput.onchange = function() {
+    const formColumn = document.querySelectorAll(".group__column");
+    for (let i = 0; i < formColumn.length; i++) {
+      const input = formColumn[i];
+      if (input.classList.contains('group__column')) {
+        input.remove()
+      }
+    }
+    // if (group.classList.contains("group--active")) {
+    //   group.classList.remove("group--active");
+    // }
+    // if (notFoundNews.classList.contains(".without-info--active")) {
+    //   notFoundNews.classList.add("without-info--disabled");
+    // }
+
+  }
+
   createCirclePreloader();
+  // createPreloaderWithoutInfo();
 
   const preloader = document.querySelector(".preloader");
 
@@ -54,11 +70,6 @@ form.addEventListener("submit", function (event) {
       } else {
         notFoundNews.classList.add("without-info--disabled");
       }
-
-      // if (formButtonInput) {
-      //   notFoundNews.classList.contains(".without-info--active")
-      //   // notFoundNews.classList.add("without-info--disabled");
-      // }
 
       news.forEach((article) => {
         articleNews.push(article);
@@ -247,6 +258,143 @@ groupBtn.addEventListener("click", function () {
     }
   }
 });
+
+// History of Github commits
+
+const COMMITS_URL = `https://api.github.com/repos/Alex-GVK/ValenciaJS/commits`;
+
+const createCommitsCard = () => {
+  const commitsSlider = document.querySelector('.commits-slider');
+  for (let i = 0; i <= 19; i++) {
+    const commitsSliderItem = document.createElement('div');
+  commitsSliderItem.className = 'commits-slider__item';
+  commitsSlider.append(commitsSliderItem);
+
+  const sliderItemInner = document.createElement('div');
+  sliderItemInner.className = 'item-inner';
+  commitsSliderItem.append(sliderItemInner);
+
+  const itemInnerDate = document.createElement('div');
+  itemInnerDate.className = 'item-inner__date';
+
+  const itemInnerRow = document.createElement('div');
+  itemInnerRow.className = 'item-inner__row';
+
+  const itemInnerRowImage = document.createElement('div');
+  itemInnerRowImage.className = 'item-inner__row-image';
+  const itemInnerImg = document.createElement('img');
+  itemInnerImg.className = 'item-inner__row-img';
+  itemInnerRowImage.append(itemInnerImg);
+
+  const itemInnerBox = document.createElement('div');
+  itemInnerBox.className = 'item-inner__box';
+  const itemInnerBoxTitle = document.createElement('div');
+  itemInnerBoxTitle.className = 'item-inner__box-title';
+  const itemInnerBoxSubtitle = document.createElement('div');
+  itemInnerBoxSubtitle.className = 'item-inner__box-subtitle';
+  const itemInnerBoxAncor = document.createElement('a');
+  itemInnerBoxAncor.className = 'item-inner__box-link';
+  itemInnerBoxSubtitle.append(itemInnerBoxAncor);
+
+  itemInnerBox.append(itemInnerBoxTitle, itemInnerBoxSubtitle);
+
+  itemInnerRow.append(itemInnerRowImage, itemInnerBox);
+  sliderItemInner.append(itemInnerDate, itemInnerRow);
+  }
+}
+createCommitsCard()
+
+// const commitsSlider = document.querySelector('.commits-slider');
+
+const getAllCommits = () => {
+  const result = fetch(COMMITS_URL)
+
+  result
+    .then((response) => {
+      return response.json();
+    })
+    .then((commits) => {
+      console.log('commits', commits);
+
+      const commitUrl = [];
+      const commitName = [];
+      const commitEmail = [];
+      const commitDate = [];
+      const commitMessage = [];
+      const commitAvatar = [];
+
+      for (let i = 0; i < 19; i++) {
+        commitUrl.push(commits[i].commit.html_url);
+        commitName.push(commits[i].commit.author.name);
+        commitEmail.push(commits[i].commit.author.email);
+        commitDate.push(commits[i].commit.author.date);
+        commitMessage.push(commits[i].commit.message);
+        commitAvatar.push(commits[i].author.avatar_url);
+      }
+
+      function getDateCommitUrl() {
+        const urlCommits = document.querySelectorAll(".commits-slider__item");
+      
+        for (let i = 0; i < urlCommits.length; i++) {
+          urlCommits[i].setAttribute("href", commitUrl[i]);
+          urlCommits[i].setAttribute("target", "_blank");
+        }
+      }
+      getDateCommitUrl()
+
+      function getDateCommitName() {
+        const nameCommits = document.querySelectorAll(".item-inner__box-title");
+        for (let i = 0; i < nameCommits.length; i++) {
+          nameCommits[i].textContent = commitName[i];
+        }
+      }
+      getDateCommitName()
+
+      function getDateCommitEmail() {
+        const emailCommits = document.querySelectorAll(".item-inner__box-link");
+        for (let i = 0; i < emailCommits.length; i++) {
+          emailCommits[i].textContent = commitEmail[i];
+        }
+      }
+      getDateCommitEmail()
+
+      function getDateCommitDate() {
+        const dateCommits = document.querySelectorAll(".item-inner__date");
+        for (let i = 0; i < dateCommits.length; i++) {
+          const commitTime = commitDate[i];
+          const fotmateCommitDate = new Date(commitTime).toLocaleDateString('ru-RU', {year: "numeric", month: "long", day: "numeric",});
+          const prunFormateCommitDate = fotmateCommitDate.slice(0, -3);
+          const breakFormateItemDate = prunFormateCommitDate.split(' ');
+          const correctCommitDate = prunFormateCommitDate.replace(breakFormateItemDate[1], breakFormateItemDate[1] + ',');
+          dateCommits[i].textContent = correctCommitDate;
+        }
+      }
+      getDateCommitDate()
+
+      function getDateCommitMessage() {
+        const messageCommits = document.querySelectorAll(".item-inner__txt");
+        for (let i = 0; i < messageCommits.length; i++) {
+          messageCommits[i].textContent = commitMessage[i];
+        }
+      }
+      getDateCommitMessage()
+
+      function getDateCommitAvatar() {
+        const avatarCommits = document.querySelectorAll(".item-inner__row-img");
+        for (let i = 0; i < avatarCommits.length; i++) {
+          avatarCommits[i].setAttribute("src", commitAvatar[i]);
+        }
+      }
+      // getDateCommitAvatar()
+      
+    })
+    .catch((error) => {
+      console.log('error', error);
+    })
+}
+getAllCommits()
+
+
 
 $(document).ready(function () {
   $(".commits-slider").slick({

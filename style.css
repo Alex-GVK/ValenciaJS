@@ -19,8 +19,16 @@ a {
   display: none;
 }
 
+.group--active {
+  display: block;
+}
+
 .without-info--disabled {
   display: none;
+}
+
+.without-info--active {
+  display: block;
 }
 
 .group__btn--disabled {
@@ -493,7 +501,7 @@ h2 {
   color: #1a1b22;
 }
 
-.iten-inner__box-link {
+.item-inner__box-link {
   font-family: "Roboto";
   font-weight: 400;
   font-size: 14px;
