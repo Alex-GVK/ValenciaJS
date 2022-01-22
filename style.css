@@ -453,6 +453,7 @@ h2 {
   padding: 15px 69px 17px 69px;
   text-align: center;
   margin: 0px 16px;
+  cursor: pointer;
 }
 
 .commits__top-btn {
@@ -472,6 +473,7 @@ h2 {
   border-radius: 16px;
   width: calc(288px + 112 * (100vw / 1440));
   margin: 0 8px;
+  cursor: pointer;
 }
 
 .item-inner__date {
@@ -491,6 +493,12 @@ h2 {
   width: 64px;
   height: 64px;
   padding: 0 16px 16px 24px;
+}
+
+.item-inner__row-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
 }
 
 .item-inner__box-title {
@@ -517,10 +525,6 @@ h2 {
   line-height: 22px;
   color: #1a1b22;
   padding: 0 24px;
-}
-
-.commits-slider__item {
-  cursor: pointer;
 }
 
 .slick-track {
