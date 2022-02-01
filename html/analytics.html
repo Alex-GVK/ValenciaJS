@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../css/analytics.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__top">
+          <div class="header__border"></div>
+          <div class="container">
+            <div class="header__top-inner">
+              <div class="logo">
+                <a class="logo__link" href="#">NewsAnalyzer</a>
+              </div>
+              <nav class="menu">
+                <ul class="menu__list">
+                  <li class="menu__list-item--active">
+                    <a class="menu__link menu__link--active" href="../index.html"
+                      >Главная</a
+                    >
+                  </li>
+                  <li class="menu__list-item--active-mobile">
+                    <a class="menu__link menu__link--active-mobile" href="#"
+                      >О проекте</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+        <section class="news-counter">
+          <div class="container">
+            <nav class="news-counter bar-list">
+              <ul class="bar-list__menu">
+                <li class="bar-list__item">
+                  <a href="../index.html" class="bar-list__main-link">Главная</a>
+                </li>
+                <li class="bar-list__item">
+                  <a href="#" class="bar-list__analitics-link--active"
+                    >/ Аналитика</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <div class="news-counter title-news">
+              Вы спросили: «Путешествия»
+            </div>
+            <div class="news-counter counter">
+              <div class="counter__week-news">
+                Новостей за неделю:
+                <span class="counter__week-news count">7777</span>
+              </div>
+              <div class="counter__titles-news">
+                Упоминаний в загаловках:
+                <span class="counter__titles-news count">555</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="analitics">
+          <div class="container">
+            <div class="analitics__box">
+              <h1 class="analitics__title">Аналитика по дням</h1>
+              <div class="analitics__header">
+                <div class="analitics__header data">
+                  <p class="data__date">Дата</p>
+                  <p class="data__mounth">(август)</p>
+                </div>
+                <div class="analitics__counter">Кол-во упоминаний</div>
+              </div>
+              <div class="analitics__border"></div>
+              <div class="analitics__diagrams">
+                <div class="analitics__diagrams days">
+                  <ul class="days__list">
+                    <li class="days__list-date">19пн</li>
+                    <li class="days__list-date">20вт</li>
+                    <li class="days__list-date">21ср</li>
+                    <li class="days__list-date">22чт</li>
+                    <li class="days__list-date">23пт</li>
+                    <li class="days__list-date">24сб</li>
+                    <li class="days__list-date">25вс</li>
+                  </ul>
+                </div>
+                <div class="analitics__diagram grade">
+                  <div class="grade__level">
+                    <div class="grade__level-item">0</div>
+                    <div class="grade__level-item">25</div>
+                    <div class="grade__level-item">50</div>
+                    <div class="grade__level-item">75</div>
+                    <div class="grade__level-item">100</div>
+                  </div>
+                  <div class="grade__chart">
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-7th-day"
+                        class="grade__chart-progress"
+                        value="32"
+                        max="100"
+                      >
+                      </progress>
+                    </div>
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-6th-day"
+                        class="grade__chart-progress"
+                        value="15"
+                        max="100"
+                      ></progress>
+                    </div>
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-5th-day"
+                        class="grade__chart-progress"
+                        value="28"
+                        max="100"
+                      ></progress>
+                    </div>
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-4th-day"
+                        class="grade__chart-progress"
+                        value="50"
+                        max="100"
+                      ></progress>
+                    </div>
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-3th-day"
+                        class="grade__chart-progress"
+                        value="60"
+                        max="100"
+                      ></progress>
+                    </div>
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-2th-day"
+                        class="grade__chart-progress"
+                        value="34"
+                        max="100"
+                      ></progress>
+                    </div>
+                    <div class="grade__chart-item">
+                      <div class="grade__chart-value">32</div>
+                      <progress
+                        id="grade__chart-1th-day"
+                        class="grade__chart-progress"
+                        value="42"
+                        max="100"
+                      ></progress>
+                    </div>
+                  </div>
+                  <div class="grade__level">
+                    <div class="grade__level-item">0</div>
+                    <div class="grade__level-item">25</div>
+                    <div class="grade__level-item">50</div>
+                    <div class="grade__level-item">75</div>
+                    <div class="grade__level-item">100</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="footer">
+          <div class="container">
+            <div class="footer__inner">
+              <div class="footer__inner-text">© 2021 Valencia</div>
+              <div class="footer__inner-content">
+                <nav class="footer__inner-menu">
+                  <ul class="footer__inner-list">
+                    <li class="footer__inner-item">
+                      <a class="footer__inner-link" href="#">Главная</a>
+                    </li>
+                    <li class="footer__inner-item">
+                      <a class="footer__inner-link" href="#">О проекте</a>
+                    </li>
+                    <li class="footer__inner-item">
+                      <a class="footer__inner-link" href="#">Valencia JS</a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="footer__inner-social">
+                  <div class="footer__inner-img">
+                    <a href="https://github.com/Alex-GVK"
+                      ><img
+                        class="footer__inner-icon"
+                        src="../img/git-icon.png"
+                        alt=""
+                    /></a>
+                  </div>
+                  <div class="footer__inner-img">
+                    <a href="https://m.facebook.com/sasha.gavrilyuk.1"
+                      ><img
+                        class="footer__inner-icon"
+                        src="../img/facebook-icon.png"
+                        alt=""
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
