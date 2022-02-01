@@ -8,6 +8,8 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const inputValueBtn = formTextInput.value;
+  localStorage.setItem('topicNews', JSON.stringify(inputValueBtn));
+  console.log(inputValueBtn);
   if (inputValueBtn === "") {
     alert("Нужно ввести ключевое слово");
     return;
@@ -45,10 +47,10 @@ form.addEventListener("submit", function (event) {
   const currentDate = new Date();
   const pastDate = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
 
+  const urlNews = `https://nomoreparties.co/news/v2/everything?q=${inputValueBtn}&from=${pastDate}&to=${currentDate}&sortBy=publishedAt&pageSize=100&apiKey=${apiKey}`
+
   async function fetchNews() {
-    const response = await fetch(
-      `https://nomoreparties.co/news/v2/everything?q=${inputValueBtn}&from=${pastDate}&to=${currentDate}&sortBy=publishedAt&pageSize=100&apiKey=${apiKey}`
-    );
+    const response = await fetch(urlNews);
 
     const data = await response.json();
     return data;
@@ -322,7 +324,7 @@ const getAllCommits = () => {
       return response.json();
     })
     .then((commits) => {
-      console.log("commits", commits);
+      // console.log("commits", commits);
 
       const commitUrl = [];
       const commitName = [];
@@ -407,6 +409,8 @@ const getAllCommits = () => {
 };
 getAllCommits();
 
+// slider
+
 $(document).ready(function () {
   $(".commits-slider").slick({
     centerMode: true,
@@ -446,3 +450,46 @@ $(document).ready(function () {
     ],
   });
 });
+
+// analytics for the every day
+
+const dateAnalyticsDays = [];
+
+for (let i = 0; i < 7; i++) {
+  const dateDays = new Date(new Date().getTime() - (i * 24 * 60 * 60 * 1000)).toLocaleDateString('sv-SE');
+
+  dateAnalyticsDays.push(dateDays);
+}
+console.log(dateAnalyticsDays);
+
+const apiKey = "7b6944c7dcee48669d9b0f45a147bab1";
+
+const inputValueBtn = formTextInput.value;
+localStorage.setItem('topicNews', JSON.stringify(inputValueBtn));
+console.log(inputValueBtn);
+
+const urlAnalyticsDays = [];
+
+for (let i = 0; i < 7; i++) {
+  const urlDays = `https://nomoreparties.co/news/v2/everything?q=${inputValueBtn}&from=${dateAnalyticsDays}&to=${dateAnalyticsDays}&sortBy=publishedAt&pageSize=100&apiKey=${apiKey}`;
+
+  urlAnalyticsDays.push(urlDays);
+}
+console.log(urlAnalyticsDays);
+
+const allAnalyticsDays = [];
+const getAnalyticsDays = () => {
+  const requests = urlAnalyticsDays.map(url => fetch(url));
+  Promise.all(requests)
+    .then((responses) => {
+      const results = responses.map((data) => data.json());
+      return Promise.all(results);
+    })
+    .then((allDays) => {
+      allDays.forEach(el => {
+        let allDaysDate = el.articles;
+        allAnalyticsDays.push(allDaysDate);
+        localStorage.setItem('analyticsDays', JSON.stringify(allAnalyticsDays))
+      })
+    })
+}
